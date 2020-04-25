@@ -1,11 +1,34 @@
 本源码生成的固件禁止使用在任何非法、商业用途！
 
-编译命令如下（引用大雕的README）:
+1. 安装编译Python需要的环境
 
-1. 首先装好 Ubuntu 64bit，推荐  Ubuntu  18 LTS x64
+yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel
 
-2. 命令行输入 sudo apt-get update ，然后输入
-sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3.5 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler g++-multilib antlr3 gperf
+安装pip
+#运行这个命令添加epel扩展源
+yum -y install epel-release
+#安装pip
+yum install python-pip
+
+2. 用wget下载python3的源码包
+cd /usr/local/src/
+wget https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tar.xz
+编译python3源码包
+
+#解压
+xz -d Python-3.8.2.tar.xz
+tar -xf Python-3.8.2.tar
+#进入解压后的目录，依次执行下面命令进行手动编译
+cd Py*
+./configure prefix=/usr/local/python3
+make && make install
+
+python3安装完毕
+
+#添加python3的软链接
+rm /usr/bin/python
+ln -s /usr/bin/python /usr/local/python3/bin/python3
+
 
 3. git clone -b dev-19.07 https://github.com/Lienol/openwrt 命令下载好源代码，然后 cd openwrt 进入目录
 
