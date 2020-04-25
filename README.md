@@ -30,17 +30,19 @@ rm /usr/bin/python
 ln -s /usr/bin/python /usr/local/python3/bin/python3
 
 
-3. git clone -b dev-19.07 https://github.com/Lienol/openwrt 命令下载好源代码，然后 cd openwrt 进入目录
+3. git clone https://github.com/hoticebeijing/openwrt.git    
+4. adduser op
+5. password op 
+6. chmod 777 ./openwrt op
+7. cd openwrt
+8. ./scripts/feeds clean
 
-4. ./scripts/feeds clean
-
-   ./scripts/feeds update -a
+9   ./scripts/feeds update -a
+10 ./scripts/feeds install -a
    
-   ./scripts/feeds install -a
+11. make menuconfig 
    
-   make menuconfig 
-   
-   make -j8 download v=s 下载dl库(可增加99%编译成功率。需全程科学上网）
+12 make -j8 download v=s 下载dl库(可增加99%编译成功率。需全程科学上网）
    
    编译完成后输出路径：
    固件：/lede/bin/targets
